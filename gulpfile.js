@@ -50,14 +50,14 @@ const isFixed = (file) => {
 };
 
 
-task('release', () => {
-	const package = JSON.parse(fs.readFileSync('package.json'));
+task('prepare-module', () => {
+	const pkgInfo = JSON.parse(fs.readFileSync('package.json'));
 	return src(['**/*', '!.*', '!node_modules{,/*,/**}', '!src{,/*,/**}', '!gulpfile*', '!LICENSE', '!package{,-lock}.json', '!releases{,/*,/**}'])
-		.pipe(zip(package.name + '_' + package.version + '.zip'))
+		.pipe(zip(pkgInfo.name + '_' + pkgInfo.version + '.zip'))
 		.pipe(dest('releases'));
 });
 
+task('release', series('copy-dependencies', 'copy-script', 'prepare-module'));
 
-task('default', series('copy-dependencies', 'copy-script'), () => {
-	console.log('done!');
-});
+
+task('default', parallel('copy-dependencies', 'copy-script'));
