@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.8" client="site" method="upgrade">
+	<name>MOD_MODEL_VIEWER</name>
+	<creationDate>06.11.2019</creationDate>
+	<author>Artem Vasilev</author>
+	<authorEmail>kern.usr@gmail.com</authorEmail>
+	<authorUrl>https://webmasterskaya.xyz</authorUrl>
+	<copyright>Copyright (C) 2019 Artem Vasilev. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
+	<version>1.0</version>
+	<description>MOD_MODEL_VIEWER_XML_DESCRIPTION</description>
+
+	<files>
+		<filename module="mod_model_viewer">mod_model_viewer.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+		<folder>media</folder>
+		<filename>mod_model_viewer.xml</filename>
+	</files>
+
+	<media folder="media" destination="mod_model_viewer">
+		<folder>js</folder>
+	</media>
+
+	<!-- Update servers -->
+	<updateservers>
+		<server type="extension" priority="1" name="model_viewer">https://webmasterskaya.xyz/updates/mod_model_viewer.xml</server>
+	</updateservers>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+			<fieldset
+					name="advanced">
+				<field
+						name="moduleclass_sfx"
+						type="text"
+						label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+						description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
